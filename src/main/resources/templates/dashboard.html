@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="/css/dashboard.css">
+</head>
+<body>
+    <!-- ====================== HEADER ========================== -->
+    <header>
+        <!-- ====================== SIDE NAVBAR ========================== -->
+        <nav id="sidebarMenu" class="collapse d-block sidebar collapse bg-white">
+          <div class="position-sticky" id="nav-items">
+            <div class="list-group list-group-flush mx-3 mt-4">
+                <div class="logo mb-4">
+                    <img src="/logo/download.jpg" alt="e-wallet">
+                </div>
+
+                <a href="" class="click-nav list-group-item list-group-item-action py-2 ripple active" aria-current="true" onclick="changeSection(this.id)" id="home">
+                    <i class="fas fa-tachometer-alt fa-fw me-3 "></i>
+                    <span>Main dashboard</span>
+                </a>
+
+                <a href="#" class="click-nav list-group-item list-group-item-action py-2 ripple" onclick="changeSection(this.id)" id="profile">
+                    <i class="fas fa-user fa-fw me-3"></i>
+                    <span>Profile</span>
+                </a>
+
+                <a href="#" class="click-nav list-group-item list-group-item-action py-2 ripple " onclick="changeSection(this.id)" id="balance">
+                    <i class="fas fa-money-bill fa-fw me-3"></i>
+                    <span>Check Balance</span>
+                </a>
+              
+                <a href="#" class="click-nav list-group-item list-group-item-action py-2 ripple" onclick="changeSection(this.id)" id="payment">
+                    <i class="fa-brands fa-cc-amazon-pay me-3"></i>
+                    <span>Payment</span>
+                </a>
+              
+                <a href="#" class="click-nav list-group-item list-group-item-action py-2 ripple" onclick="changeSection(this.id)" id="transaction">
+                    <i class="fas fa-chart-simple fa-fw me-3"></i>
+                    <span>Transactions</span>
+                </a>
+
+                <a href="#" class="click-nav list-group-item list-group-item-action py-2 ripple" onclick="changeSection(this.id)" id="all-users"><i
+                    class="fas fa-users fa-fw me-3"></i><span>All Users</span></a>
+              
+                <a href="#" class="click-nav list-group-item list-group-item-action py-2 ripple" onclick="changeSection(this.id)" id="recharge">
+                    <i class="fas fa-mobile-retro fa-fw me-3"></i>
+                    <span>Recharge</span>
+                </a>
+              
+                <a href="#" class="click-nav list-group-item list-group-item-action py-2 ripple" onclick="changeSection(this.id)" id="ticket">
+                    <i class="fas fa-train fa-fw me-3"></i>
+                    <span>Ticket Booking</span>
+                </a>
+                
+                <a href="#" class="click-nav list-group-item list-group-item-action py-2 ripple" onclick="changeSection(this.id)" id="bill">
+                    <i class="fas fa-building fa-fw me-3"></i>
+                    <span>Bill Payments</span>
+                </a>
+
+                <a href="#" class="click-nav list-group-item list-group-item-action py-2 ripple" onclick="changeSection(this.id)" id="loan">
+                    <i class="fas fa-dollar-sign fa-fw me-3"></i>
+                    <span>Credit Loan</span>
+                </a>
+
+                <a href="#" class="click-nav list-group-item list-group-item-action py-2 ripple" onclick="changeSection(this.id)" id="stock">
+                    <i class="fas fa-arrow-trend-up fa-fw me-3"></i>
+                    <span>Stock Invest</span>
+                </a>
+
+                <a href="/" class="py-2 ripple mt-5 btn btn-danger" id="logout">
+                    <i class="fas fa-lock fa-fw fa-fw me-3"></i>
+                    <span>Logout</span>
+                </a>
+
+            </div>
+          </div>
+        </nav>
+
+    </header>
+
+      <!-- ====================== MAIN LAYOUT ========================== -->
+    <main style="margin-top: 10px; margin-right: 5px;" id="main">
+        <!-- ====================== HOME ========================== -->
+        <section id="home" class="home active-section">
+            <div class="container pt-4">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div th:if="${session.msg} != null">
+                            <div class="alert alert-success alert-dismissible fade show text-center" role="alert" >
+                                <strong th:text="${session.msg}">Payment Done - SUCCESSFULL</strong>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" area-label="Close"></button>
+                            </div>
+                            <th:block th:text="${#session.removeAttribute('msg')}"></th:block>
+                        </div>
+                        <h1>Hi <span th:text="${user.name}" class="text-danger">John Smith</span>,</h1>
+                        <h2 class="text-success">You are Welcome to <br> e-wallet Dashboard</h2>
+                        <br>
+
+                        <div class="card p-4">
+                            <div class="mb-5">
+                                <h3>Name: <span th:text="${user.name}" class="text-danger ms-3">John Smith</span> </h3>
+                                <h3>Email: <span th:text="${user.email}" class="text-danger ms-3">john123@gmail.com</span> </h3>
+                                <h3>Mobile No: <span  class="text-danger ms-2" th:text="${user.mobileNo}">9575895642</span> </h3>
+                            </div>
+                            
+                            <a href="#" class="btn btn-secondary mb-3 " onclick="changeSection('balance'), changeSectionFromDashboard('balance')">Check Balance</a>
+
+                            <a href="#" class="btn btn-success mb-3 " onclick="changeSection('profile'), changeSectionFromDashboard('profile')">Update Profile</a>
+
+                            <a href="#" class="btn btn-primary mb-3 " onclick="changeSection('payment'), changeSectionFromDashboard('payment')">Make a Payment</a>
+
+                            <a href="#" class="btn btn-danger mb-3" onclick="changeSection('transaction'),changeSectionFromDashboard('transaction')" >View All Transactions</a>
+                        </div>
+                    </div>
+                    <!-- <div class="col-sm-6">
+                        <h1>Hi <span th:text="${user.name}" class="text-danger">John Mark</span>,</h1>
+                        <h2 class="text-success">You are Welcome to e-wallet Dashboard</h2>
+                        <br>
+
+                        <div class="card p-4">
+                            <h3>Name: <span th:text="${user.name}" class="text-danger ms-3">John Mark</span> </h3>
+                            <h3>Email: <span th:text="${user.email}" class="text-danger ms-3">john123@gmail.com</span> </h3>
+                            <h3>Mobile No: <span  class="text-danger ms-2">9575895642</span> </h3>
+            
+                            
+                            <a href="#" class="btn btn-primary mb-3 mt-4" onclick="changeSection(this.id)" id="payment">Make a Payment</a>
+                            <a href="#" class="btn btn-danger mb-3" onclick="changeSection(this.id)" id="transaction">View All Transactions</a>
+                            <a href="#" class="btn btn-info mb-3" onclick="changeSection(this.id)" id="balance">Check Balance</a>
+                            <a href="#" class="btn btn-success mb-3" onclick="changeSection(this.id)" id="profile">Update Profile</a>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+        </section>
+
+        <!-- ====================== PROFILE  ========================== -->
+        <section id="profile" class="profile">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h1 class="my-5 text-success">This Is Profile Section</h1>
+                        <div class="card p-4 ">
+                            <h3>Name: <span th:text="${user.name}" class="text-danger ms-3">John Mark</span> </h3>
+                            <h3>Email: <span th:text="${user.email}" class="text-danger ms-3">john123@gmail.com</span> </h3>
+                            <h3>Mobile: <span th:text="${user.mobileNo}" class="text-danger ms-2">9575895642</span> </h3>
+                            <h3>Password: <span th:text="${user.password}" class="text-danger ms-2">John@123</span> </h3>
+            
+                            <a href="" class="btn btn-success mt-4 w-50" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Update Profile</a>
+
+                            <!-- Update Profile Modal -->
+                            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                  <div class="modal-content">
+                                    <div class="modal-header">
+                                      <h1 class="modal-title fs-5 text-success text-center" id="staticBackdropLabel">Update Profile</h1>
+                                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form action="/update" method="post">
+                                            <div class="mb-3">
+                                                <label for="name" class="form-label">Name : </label>
+                                                <input type="text" class="form-control" name="name" id="up-name" th:value="${user.name}">
+                                            </div>
+
+                                            <div class="mb-3 d-none">
+                                                <label for="email" class="form-label">Email :</label>
+                                                <input type="email" class="form-control" name="email" th:value="${user.email}" required>
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <label for="mobileNo" class="form-label">Mobile Number : </label>
+                                                <input type="number" class="form-control" name="mobileNo" id="mobileNo" th:value="${user.mobileNo}">
+                                            </div>
+                                            <div class="mb-4">
+                                              <label for="password" class="form-label">Password</label>
+                                              <input type="text" class="form-control" name="password" id="exampleInputPassword1" th:value="${user.password}" required>
+                                            </div>
+
+                                            <div class="d-flex">
+                                                <button type="submit" class="btn btn-primary me-auto">Update</button>
+                                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                                            </div>
+                                            
+                                          </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                      
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ====================== BALANCE ========================== -->
+        <section id="balance" class="balance">
+            <div class="container">
+                <div class="row my-5">
+                    <div class="col-lg-6">
+                        <h1 class="mb-5 text-success">This is your Balance Section</h1>
+                        
+                        <div class="card p-4"  >
+                            <div class="row">
+                                <div class="col-sm-4 mb-sm-0 mb-4">
+                                    <a href="#" class="btn btn-outline-danger me-auto rounded-pil me-auto">wallet Id : <span th:text="${wallet.id}" >35</span></a>        
+                                </div>
+                                <div class="col-sm-8 text-sm-end">
+                                    <a href="#" class="btn btn-danger rounded-pill" onclick="display('my_balance', this.id)" id="show_balance">Show My Balance</a>
+                                </div>
+                            </div>
+                            
+                            <div class="row my-4">
+                                <div class="col">
+                                    <h2 class="d-sm-inline mb-sm-0 mb-4" >
+                                        Your current Balance is : 
+                                    </h2>
+                                    <span class="border border-primary rounded px-4 py-2 ms-3 mt-sm-0 mt-5">
+                                        <strong class="my_balance text-success" style="display: none;" th:text="${wallet.balance}" >100</strong>
+                                        <span class="my_balance text-success" id=""> $$$.$$ </span>
+                                    </span> 
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-5 mb-sm-0 mb-4">
+                                    <a href="#" class="btn btn-success rounded-pill me-sm-4" onclick="changeSection('payment'), changeSectionFromDashboard('payment')">Make Payment</a>
+                                </div>
+                                <div class="col-sm-7 text-sm-end">
+                                    <a href="#" class="btn btn-primary rounded-pill ms-auto">Add Money To Wallet</a>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ====================== PAYMENT ========================== -->
+        <section id="payment" class="payment">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h1 class="text-center text-success">Make Your Payment</h1>
+                        <form action="/payment" method="post" class="mx-auto mt-5 p-sm-4 p-2 border border-primary rounded">
+                            <h3 class="text-center text-success mb-5"><strong>Safe Payment</strong></h3>
+                            
+                            <div class="form-group d-none">
+                                <label for="fromUser" class="mb-2">Send From: </label>
+                                <input type="email" class="form-control mb-4" name="fromUser" id="fromUser" th:value="${user.email}">
+                            </div>
+                            <div class="form-group"  >
+                              <label for="toUser" class="mb-2">Send To: </label>
+                              <input type="email" class="form-control mb-4" name="toUser" id="toUser"  placeholder="Enter email">
+                            </div>
+                            <div class="form-group">
+                              <label for="amount" class="mb-2">Amount: </label>
+                              <input type="number" class="form-control mb-4" name="amount" id="amount" placeholder="Amount">
+                            </div>
+        
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="reset" onclick="history.back()" class="btn btn-danger">Cancel</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ====================== TRANSACTION LIST ========================== -->
+        <section id="transaction" class="transaction">  
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <h1 class="text-center text-success mb-4">This is Transaction Section</h1>
+                        <table class="table table-bordered table-hover text-center">
+                            <thead class="table-dark">
+                                <tr>
+                                  <th scope="col">No.</th>
+                                  <th scope="col">Txn Id</th>
+                                  <th scope="col">Amount</th>
+                                  <th scope="col">To</th>
+                                  <th scope="col">Status</th>
+                                  <th scope="col">Date</th>
+                                </tr>
+                            </thead>
+            
+                            <tbody>
+                                <tr th:each="txn: ${transactions}">
+                                    <th scope="row" th:text="${txn.id}">1</th>
+                                    <td th:text="${txn.txn_Id}">xyz-tyu-3er4-rt4</td>
+                                    <td th:text="${txn.amount}">456</td>
+                                    <td th:text="${txn.toUser}">email@email.com</td>
+                                    <td th:text="${txn.transactionStatus}">email@email.com</td>
+                                    <td th:text="${txn.createdOn}">Sun 12 2022</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ====================== USER LIST ========================== -->
+        <section id="all-users" class="all-users">
+            <h1 class="text-center text-success mb-4">All User List Section</h1>
+            <table class="table table-bordered table-hover text-center">
+                <thead class="table-dark">
+                    <tr>
+                      <th scope="col">Id</th>
+                      <th scope="col">Name</th>
+                      <th scope="col">Mobile</th>
+                      <th scope="col">Email</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr th:each="user1: ${userList}">
+                      <th scope="row" th:text="${user1.id}">1</th>
+                      <td th:text="${user1.name}">Mark</td>
+                      <td th:text="${user1.mobileNo}">Otto</td>
+                      <td th:text="${user1.email}">email@email.com</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- ====================== RECHARGE ========================== -->
+        <section id="recharge" class="recharge">
+            <h1 class="mb-4">This is Recharge Section</h1>
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <div class="card" style="width: 18rem;">
+                            <img class="card-img-top" src="/img/antoni.jpg" alt="Card image cap">
+                            <div class="card-body">
+                              <h5 class="card-title">Recharges Feature Comming Soon...</h5>
+                              <p class="card-text">We are contantly working to improve our Services. You will get this feature in next Update. Thanks for patience and understanding...
+                              </p>
+                              <a href="#" class="btn btn-primary">Learn More...</a>
+                            </div>
+                          </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ====================== TICKET ========================== -->
+        <section id="ticket" class="ticket">
+            <h1 class="mb-4 text-success">This is Ticket Booking Section</h1>
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <div class="card" style="width: 18rem;">
+                            <img class="card-img-top" src="/img/andrea.jpg" alt="Card image cap">
+                            <div class="card-body">
+                              <h5 class="card-title">Ticket Booking Feature Comming Soon...</h5>
+                              <p class="card-text">We are contantly working to improve our Services. You will get this feature in next Update. Thanks for patience and understanding...
+                              </p>
+                              <a href="#" class="btn btn-primary">Learn More...</a>
+                            </div>
+                          </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ====================== BILL PAYMENT ========================== -->
+        <section id="bill" class="bill">
+            <h1 class="mb-4 text-success">This is Bill Payment Section</h1>
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <div class="card" style="width: 18rem;">
+                            <img class="card-img-top" src="/img/comp.jpg" alt="Card image cap">
+                            <div class="card-body">
+                              <h5 class="card-title">Bill Payment Feature Comming Soon...</h5>
+                              <p class="card-text">We are contantly working to improve our Services. You will get this feature in next Update. Thanks for patience and understanding...
+                              </p>
+                              <a href="#" class="btn btn-primary">Learn More...</a>
+                            </div>
+                          </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ====================== LOAN PAYMENT ========================== -->
+        <section id="loan" class="loan">
+            <h1 class="mb-4 text-success">This is Credit Loan Section</h1>
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <div class="card" style="width: 18rem;">
+                            <img class="card-img-top" src="/img/credit.jpg" alt="Card image cap">
+                            <div class="card-body">
+                              <h5 class="card-title">Credit Loan Feature Comming Soon...</h5>
+                              <p class="card-text">We are contantly working to improve our Services. You will get this feature in next Update. Thanks for patience and understanding...
+                              </p>
+                              <a href="#" class="btn btn-primary">Learn More...</a>
+                            </div>
+                          </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ====================== STOCK INVEST ========================== -->
+        <section id="stock" class="stock">
+            <h1 class="mb-4 text-success">This is Stock Invest Section</h1>
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <div class="card" style="width: 18rem;">
+                            <img class="card-img-top" src="/img/lapi.jpg" alt="Card image cap">
+                            <div class="card-body">
+                              <h5 class="card-title">Stock Invest Feature Comming Soon...</h5>
+                              <p class="card-text">We are contantly working to improve our Services. You will get this feature in next Update. Thanks for patience and understanding...
+                              </p>
+                              <a href="#" class="btn btn-primary">Learn More...</a>
+                            </div>
+                          </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+      <!-- Main layout ends here -->
+
+    
+    <!-- scrips -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+
+    <script src="/js/dashboard.js"></script>
+</body>
+</html>

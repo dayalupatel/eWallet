@@ -1,0 +1,101 @@
+*{
+    font-family: cursive;
+    color: white;
+}
+ /* ---------- Navbar ---------------  */
+.navbar-brand {
+    width: 150px;
+}
+.navbar-brand img {
+  width: 100%;
+}
+.nav-btn{
+    border-radius: 40px;
+}
+.banner{
+    position: relative;
+    width: 100%;
+    height: 80vh;
+    background: linear-gradient(45deg, rgba(0, 0, 0, 0.6),
+     rgba(0, 0, 0, 0.6)), url(/img/andrea.jpg);
+    background-position: center;
+    background-size: cover;
+}
+
+/* ---------- Banner ---------------  */
+.banner-text{
+    height: 80vh;
+}
+.banner-text h2, h4{
+    color: white;
+    margin-bottom: 30px;
+}
+.banner-text h4{
+    margin-bottom: 50px;
+}
+.banner-btn {
+    border: 2px solid rgb(27, 150, 238);
+    margin: 15px;
+    padding: 10px 20px;
+    background: none;
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    transition: 0.5s all;
+}
+.banner-btn:hover {
+    background: rgb(48, 234, 251);
+    border-color: rgb(48, 234, 251);
+    color: black;
+}
+
+
+/* ---------- Cards ---------------  */
+.card:hover{
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.534);
+}
+.my-card {
+    /* width: 90%; */
+    padding: 20px;
+    border-radius: 20px;
+}
+.my-card:hover {
+    background: rgba(0, 0, 0, 0.2);
+}
+.my-card .card-img{
+    width: 70px;
+    height: 70px;
+    margin-bottom: 10px;
+}
+.my-card .card-img img{
+    width: 100%
+}
+#cards {
+    background-color: #228181;
+}
+#recharge {
+    background-color: #228181;
+}
+#booking {
+    background-color: blue;
+}
+
+
+/* ---------- Contact Form ---------------  */
+.contact {
+    background-color: #a1ddd6;
+}
+.contact-form {
+    background-color: rgb(218 239 228);
+    border: 3px solid #a1ddd6;
+    border-radius: 20px;
+    box-shadow: 10px 15px 15px rgba(0, 0, 0, 0.702);
+}
+.contact label{
+    color: black;
+}
+
+/* ---------- Footer ---------------  */
+.footer1 {
+    background-color: rgb(0, 0, 0, 0.8);
+}

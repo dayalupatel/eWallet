@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Database</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+<body>
+    <section class="user">
+        <section id="all-users" class="all-users">
+            <h1 class="text-center text-success mb-4">All Users List</h1>
+            <table class="table table-bordered table-hover text-center">
+                <thead class="table-dark">
+                    <tr>
+                      <th scope="col">Id</th>
+                      <th scope="col">Name</th>
+                      <th scope="col">Mobile</th>
+                      <th scope="col">Email</th>
+                      <th scope="col">Password</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr th:each="user1: ${userList}">
+                      <th scope="row" th:text="${user1.id}">1</th>
+                      <td th:text="${user1.name}">Mark</td>
+                      <td th:text="${user1.mobileNo}">Otto</td>
+                      <td th:text="${user1.email}">email@email.com</td>
+                      <td th:text="${user1.password}">pass@123</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </section>
+    <section class="wallet">
+        <section id="all-users" class="all-users">
+            <h1 class="text-center text-success mb-4">All Users List</h1>
+            <table class="table table-bordered table-hover text-center">
+                <thead class="table-dark">
+                    <tr>
+                      <th scope="col">Id</th>
+                      <th scope="col">Balance</th>
+                      <th scope="col">Owner Email</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr th:each="w: ${walletList}">
+                      <th scope="row" th:text="${w.id}">1</th>
+                      <td th:text="${w.balance}">100.20</td>
+                      <td th:text="${w.owner}">Otto@g</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </section>
+    <section class="transaction">
+        <section id="all-users" class="all-users">
+            <h1 class="text-center text-success mb-4">All Users List</h1>
+            <table class="table table-bordered table-hover text-center">
+                <thead class="table-dark">
+                    <tr>
+                      <th scope="col">Id</th>
+                      <th scope="col">amount</th>
+                      <th scope="col">date</th>
+                      <th scope="col">from</th>
+                      <th scope="col">to</th>
+                      <th scope="col">status</th>
+                      <th scope="col">txn_id</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr th:each="t: ${txnList}">
+                      <th scope="row" th:text="${t.id}">1</th>
+                      <td th:text="${t.amount}">100.23</td>
+                      <td th:text="${t.createdOn}">10 oct 2022</td>
+                      <td th:text="${t.fromUser}">email@email.com</td>
+                      <td th:text="${t.toUser}">pass@123</td>
+                      <td th:text="${t.transactionStatus}">SUCCESSFULL</td>
+                      <td th:text="${t.txn_Id}">dfjks-sdf-dfg3-sd</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </section>
+</body>
+</html>

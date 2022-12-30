@@ -1,0 +1,50 @@
+main {
+    padding-left: 250px;
+    padding-top: 20px;
+}
+/* Sidebar */
+.sidebar {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    /* padding: 58px 0 0;  */
+    /* Height of navbar */
+    box-shadow: 0 2px 5px 0 rgb(0 0 0 / 5%), 0 2px 10px 0 rgb(0 0 0 / 5%);
+    width: 240px;
+    z-index: 600;
+}
+.active {
+    border-radius: 10px;
+    box-shadow: 2px 2px 2px rgba(67, 61, 61, 0.629);
+}
+.logo {
+    width: 160px;
+}
+.logo img {
+    width: 100%;
+}
+.home, .profile, .balance, .transaction, .payment, .ticket, .bill, .loan, .recharge, .all-users, .stock {
+    display: none;
+}
+.active-section{
+    display: block;
+}
+@media only screen and (max-width: 768px) {
+    .sidebar {
+        display: block;
+        width: 80px;
+    }
+    main {
+        padding-left: 100px;
+    }
+    .sidebar span {
+        display: none;
+    }
+    .logo {
+        width: 60px;
+    }
+    .logo img {
+        width: 100%;
+    }
+}
