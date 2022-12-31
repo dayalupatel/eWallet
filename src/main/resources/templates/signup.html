@@ -10,7 +10,7 @@
 <body>
     <div class="container  d-flex justify-content-center align-item-center">
         <div class="row">
-            <div class="col-md-6 col-10 mx-auto jumbotron bg-light p-5">
+            <div class="col-md-6 col-11 mx-auto jumbotron bg-light p-5">
                 <h3 class="jumbotron-title mb-4 text-success text-center">Free Ragistration</h3>
 
                 <form class="row" action="/add-user" method="post">
@@ -35,12 +35,13 @@
                     <label for="password" class="form-label">Password</label>
                     <input type="password" name="password" class="form-control mb-4" id="password" placeholder="Enter a password..." required>
                     
-                    <div class="btn-group col">
+                    <div class="btn-group">
                         <div class="mt-4 me-auto">
-                            <button type="submit" class="btn btn-primary rounded-pill">Create Account</button>
+                            <button type="submit" class="btn btn-primary rounded-pill d-sm-block d-none">Create Account</button>
+                            <button type="submit" class="btn btn-primary rounded-pill d-sm-none d-block">Sign in</button>
                         </div>
                         <div class="mt-4 ms-auto">
-                          <button type="button" class="btn btn-danger rounded-pill px-4" th:href="@{/}">Cancel</button>
+                            <a  class="btn btn-danger rounded-pill px-4" href="/">Cancel</a>
                         </div>
                     </div>
 
