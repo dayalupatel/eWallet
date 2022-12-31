@@ -1,5 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Prosto+One&display=swap');
 *{
-    font-family: cursive;
+    font-family: 'Prosto One', cursive;
     color: white;
 }
  /* ---------- Navbar ---------------  */
